@@ -33,7 +33,7 @@
 	{{-- OpenGraph protocol's meta --}}
 	<meta property="og:title" content=""/>
 	<meta property="og:description" content=""/>
-	<meta property="og:url" content="http://www.fastnshine.fr"/>
+	<meta property="og:url" content="{{ url('/') }}"/>
 	<meta property="og:image" content=""/>
 
 	{{-- Fonts --}}
@@ -45,64 +45,41 @@
 </head>
 <body>
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="#">Project name</a>
-		</div>
-		<div id="navbar" class="navbar-collapse collapse">
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Dashboard</a></li>
-				<li><a href="#">Settings</a></li>
-				<li><a href="#">Profile</a></li>
-				<li><a href="#">Help</a></li>
+<div class="container">
+
+	<div class="masthead">
+		<h3 class="text-muted">{{ config('app.name') }}</h3>
+		<nav>
+			<ul class="nav nav-justified">
+				<li><a href="{{ route('app.index') }}">Intro</a></li>
+				<li class="active"><a href="{{ route('chat.index') }}">Dashboard</a></li>
+				<li><a href="{{ route('chat.index') }}">Real-time chat</a></li>
+				@if (Route::has('login'))
+					@if (Auth::check())
+						<li><a href="{{ url('/home') }}">Home</a></li>
+					@else
+						<li><a href="{{ url('/login') }}">Login</a></li>
+						<li><a href="{{ url('/register') }}">Register</a></li>
+					@endif
+				@endif
 			</ul>
-			<form class="navbar-form navbar-right">
-				<input type="text" class="form-control" placeholder="Search...">
-			</form>
-		</div>
+		</nav>
 	</div>
-</nav>
 
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-sm-3 col-md-2 sidebar">
-			@section('sidebar')
-
-				<ul class="nav nav-sidebar">
-					<li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-					<li><a href="#">Reports</a></li>
-					<li><a href="#">Analytics</a></li>
-					<li><a href="#">Export</a></li>
-				</ul>
-				<ul class="nav nav-sidebar">
-					<li><a href="">Nav item</a></li>
-					<li><a href="">Nav item again</a></li>
-					<li><a href="">One more nav</a></li>
-					<li><a href="">Another nav item</a></li>
-					<li><a href="">More navigation</a></li>
-				</ul>
-				<ul class="nav nav-sidebar">
-					<li><a href="">Nav item again</a></li>
-					<li><a href="">One more nav</a></li>
-					<li><a href="">Another nav item</a></li>
-				</ul>
-
-			@show
-		</div>
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<h1 class="page-header">@yield('title')</h1>
-
-			@yield('content')
-		</div>
+	<!-- Jumbotron -->
+	<div class="jumbotron">
+		<h1>@yield('title')</h1>
 	</div>
+
+	@yield('content')
+
+	<footer class="footer">
+		<p>&copy; 2016 {{ config('app.name') }}, Inc.</p>
+	</footer>
+
 </div>
 
+{{-- Scripts --}}
+<script src="{{ asset('assets/js/app.js') }}"></script>
 </body>
 </html>

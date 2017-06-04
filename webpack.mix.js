@@ -71,4 +71,3 @@ mix.js('resources/assets/js/app.js', 'js');
 
 // Compile raw stylesheet file to public
 mix.sass('resources/assets/sass/app.scss', 'css');
-
