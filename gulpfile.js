@@ -70,8 +70,8 @@ const path = {
 gulp.task('js:build', function () {
 	gulp.src([
 		path.src.vendor + 'jquery/dist/jquery.js',
-		path.src.vendor + 'bootstrap/dist/js/bootstrap.js',
+		path.src.vendor + 'bootstrap/dist/js/bootstrap.js'
 	])
-		.pipe(concat('appstrap.js'))
+		.pipe(concat('vendor.js'))
 		.pipe(gulp.dest(path.build.js));
 });
