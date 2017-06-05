@@ -11,6 +11,7 @@
  |
  | @docs https://laravel.com/docs/5.4/mix
  |
+ | To be used in future as a project grows.
  */
 
 /**
