@@ -7,6 +7,7 @@
 /.vagrant
 /firefox_root
 /logs
+/storage/debugbar
 Homestead.json
 Homestead.yaml
 npm-debug.log
