@@ -79,7 +79,7 @@ gulp.task('js:build', function () {
  * Production: Build javascript
  */
 gulp.task('js:prod', ['js:build'], function () {
-    gulp.src(path.build.js + '**/*')
+    gulp.src([path.build.js + '**/*', '!'+path.build.js + '**/*.min.js'])
         .pipe(sourcemaps.init())
         .pipe(uglify())
         .pipe(sourcemaps.write())
@@ -100,6 +100,7 @@ gulp.task('css:build', function () {
         .pipe(gulp.dest(path.build.css))
         .pipe(browserSync.stream());
 });
+
 /**
  * Build Template CSS pre-processor
  */
@@ -111,17 +112,32 @@ gulp.task('css:template', function () {
         .pipe(browserSync.stream());
 });
 
-
 /**
  * Production: Build CSS pre-processor
  */
 gulp.task('css:prod', ['css:build'], function () {
-    gulp.src(path.build.css + '**/*')
+    gulp.src([path.build.css + '**/*', '!'+path.build.css + '**/*.min.css'])
         .pipe(sourcemaps.init())
         .pipe(cssmin())
         .pipe(sourcemaps.write())
         .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest(path.build.css));
+});
+
+/**
+ * Copy images to public directory
+ */
+gulp.task('img:copy', function () {
+    gulp.src(path.src.img + '**/*')
+        .pipe(gulp.dest(path.build.img))
+});
+
+/**
+ * Copy images to public directory
+ */
+gulp.task('fonts:copy', function () {
+    gulp.src(path.src.fonts + '**/*')
+        .pipe(gulp.dest(path.build.fonts))
 });
 
 /**
@@ -150,7 +166,7 @@ gulp.task('watcher', function () {
 });
 
 
-gulp.task('default', ['js:build', 'css:build']);
+gulp.task('default', ['js:build', 'css:build', 'img:copy', 'fonts:copy']);
 gulp.task('production', ['js:build', 'js:prod', 'css:build', 'css:prod']);
 gulp.task('watch', ['default', 'watcher']);
 
