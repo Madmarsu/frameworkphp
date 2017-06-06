@@ -33,7 +33,7 @@ const path = {
 	src:   {
 		views:  'resources/views/',
 		js:     'resources/assets/js/',
-		css:    'resources/assets/less/',
+		less:    'resources/assets/less/',
 		img:    'resources/assets/images/',
 		fonts:  'resources/assets/fonts/',
 		vendor: 'vendor/bower_components/'
@@ -74,4 +74,13 @@ gulp.task('js:build', function () {
 	])
 		.pipe(concat('vendor.js'))
 		.pipe(gulp.dest(path.build.js));
+});
+
+gulp.task('css:build', function () {
+	gulp.src([
+		path.src.less + 'appstrap.less',
+		path.src.less + 'template.less'
+	])
+		.pipe(less())
+		.pipe(gulp.dest(path.build.css));
 });
