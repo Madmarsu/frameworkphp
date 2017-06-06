@@ -10,6 +10,7 @@
 	<meta name="_token" content="IRGckjNCP4PwojYq6vsEGJhDZfxsgqsN2bw70scH "/>
 
 	{{-- Mobile application icons for iOS, Android and WindowsPhone --}}
+	@if(FALSE) {{-- Temporarily disable --}}
 	<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
@@ -27,6 +28,7 @@
 	<meta name="msapplication-TileColor" content="#4EC8ED">
 	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 	<meta name="theme-color" content="#4EC8ED">
+	@endif
 
 	<title>@yield('title') | {{ config('app.name') }}</title>
 
@@ -36,11 +38,9 @@
 	<meta property="og:url" content="{{ url('/') }}"/>
 	<meta property="og:image" content=""/>
 
-	{{-- Fonts --}}
-	<link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
 	{{-- Stylesheets --}}
-	<link href="{{ mix('css/app.css', 'assets') }}" rel="stylesheet" type="text/css" media="all"/>
+	<link href="{{ asset('assets/css/vendor.css') }}" rel="stylesheet" type="text/css" media="all"/>
+	<link href="{{ asset('assets/css/template.css') }}" rel="stylesheet" type="text/css" media="all"/>
 
 </head>
 <body>
