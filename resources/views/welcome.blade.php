@@ -18,7 +18,7 @@
             font-weight: 100;
             height: 100vh;
             margin: 0;
-            background: #fff url('/assets/images/hyperion-logo.png') 10% 10% no-repeat;
+            background: #fff url('/assets/img/hyperion-logo.png') 10% 10% no-repeat;
         }
 
         .full-height {
@@ -65,35 +65,32 @@
     </style>
 </head>
 <body id="app">
-<div class="flex-center position-ref full-height">
-    @if (Route::has('login'))
-        <div class="top-right links">
-            @if (Auth::check())
-                <a href="{{ url('/home') }}">Home</a>
-            @else
-                <a href="{{ url('/login') }}">Login</a>
-                <a href="{{ url('/register') }}">Register</a>
-            @endif
-        </div>
-    @endif
 
-    <div class="content">
-        <div class="title m-b-md">
-            {{ config('app.name') }}
-        </div>
+	<div class="flex-center position-ref full-height">
+		@if (Route::has('login'))
+			<div class="top-right links">
+				@if (Auth::check())
+					<a href="{{ url('/home') }}">Home</a>
+				@else
+					<a href="{{ url('/login') }}">Login</a>
+					<a href="{{ url('/register') }}">Register</a>
+				@endif
+			</div>
+		@endif
 
-        <div class="links">
-            <a href="{{ route('app.dashboard') }}">Dashboard</a>
-            <a href="{{ route('chat.index') }}">Chat</a>
-        </div>
-    </div>
-</div>
-<section id="sectionBody">
-    <h1>Real-time communication</h1>
+		<div class="content">
+			<div class="title m-b-md">
+				{{ config('app.name') }}
+			</div>
 
-    <example></example>
+			<div class="links">
+				<a href="{{ route('app.dashboard') }}">Dashboard</a>
+				<a href="{{ route('chat.index') }}">Chat</a>
+			</div>
+		</div>
+	</div>
 
-</section>
-<script src="{{ asset('assets/js/app.js') }}"></script>
+	<script src="{{ asset('assets/js/vendor.js') }}"></script>
+	<script src="{{ asset('assets/js/applicaton.js') }}"></script>
 </body>
 </html>

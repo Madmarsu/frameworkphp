@@ -12,10 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 })->name('app.index');
 
-Route::get('/dashboard', function(){
+Route::get('/dashboard', function () {
 	return view('pages.dashboard');
 })->name('app.dashboard');
 
@@ -29,5 +29,5 @@ Route::get('/dashboard', function(){
 */
 
 Route::get('/chat', function () {
-    return view('chat.index');
+	return view('chat.index');
 })->name('chat.index');

@@ -52,6 +52,7 @@ const path = {
     watch: {
         app:    'app/**/*',
         config: 'config/**/*',
+        routes: 'routes/**/*',
         langs:  'resources/lang/**/*',
         views:  'resources/views/**/*',
         js:     'resources/assets/js/**/*',
@@ -80,9 +81,9 @@ gulp.task('js:build', function () {
  */
 gulp.task('js:prod', ['js:build'], function () {
     gulp.src([path.build.js + '**/*', '!'+path.build.js + '**/*.min.js'])
-        .pipe(sourcemaps.init())
+        // .pipe(sourcemaps.init())
         .pipe(uglify())
-        .pipe(sourcemaps.write())
+        // .pipe(sourcemaps.write())
         .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest(path.build.js));
 });
@@ -117,9 +118,9 @@ gulp.task('css:template', function () {
  */
 gulp.task('css:prod', ['css:build'], function () {
     gulp.src([path.build.css + '**/*', '!'+path.build.css + '**/*.min.css'])
-        .pipe(sourcemaps.init())
+        // .pipe(sourcemaps.init())
         .pipe(cssmin())
-        .pipe(sourcemaps.write())
+        // .pipe(sourcemaps.write())
         .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest(path.build.css));
 });
@@ -161,6 +162,7 @@ gulp.task('watcher', function () {
     // Watch for files, refresh on change
     gulp.watch(path.watch.app).on('change', browserSync.reload);
     gulp.watch(path.watch.config).on('change', browserSync.reload);
+    gulp.watch(path.watch.routes).on('change', browserSync.reload);
     gulp.watch(path.watch.langs).on('change', browserSync.reload);
     gulp.watch(path.watch.views).on('change', browserSync.reload);
 });

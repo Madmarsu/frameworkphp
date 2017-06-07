@@ -1,8 +1,9 @@
 {
   "private": true,
   "scripts": {
-    "watch": "gulp watcher",
-    "prod": "gulp production"
+    "dev":   "gulp",
+    "watch": "gulp watch",
+    "prod":  "gulp production"
   },
   "devDependencies": {
     "axios": "^0.15.3",

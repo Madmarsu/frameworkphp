@@ -42,6 +42,8 @@
 	<link href="{{ asset('assets/css/vendor.css') }}" rel="stylesheet" type="text/css" media="all"/>
 	<link href="{{ asset('assets/css/template.css') }}" rel="stylesheet" type="text/css" media="all"/>
 
+	{{-- Scripts --}}
+	@yield('jshead')
 </head>
 <body>
 
@@ -66,6 +68,8 @@
 		</nav>
 	</div>
 
+	@include('templates._alert')
+
 	<!-- Jumbotron -->
 	<div class="jumbotron">
 		<h1>@yield('title')</h1>
@@ -74,12 +78,13 @@
 	@yield('content')
 
 	<footer class="footer">
-		<p>&copy; 2016 {{ config('app.name') }}, Inc.</p>
+		<p>&copy; 2016 {{ config('app.name') }}</p>
 	</footer>
 
 </div>
 
 {{-- Scripts --}}
 <script src="{{ asset('assets/js/vendor.js') }}"></script>
+@yield('js')
 </body>
 </html>
